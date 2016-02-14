@@ -13,9 +13,6 @@
             "role": "Developer"
         }
     ],
-    "require": {
-        "inwx/php-client": "dev-master"
-    },
     "autoload": {
         "psr-4": { "Bingemer\\InwxBundle\\": "" }
     },

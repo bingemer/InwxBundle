@@ -4,7 +4,7 @@ InwxBundle - A bundle to talk to the inwx api (inwx.de/inwx.com)
 Features
 --------
 
- * Uses the inwx/domrobot class: https://github.com/inwx/php-client
+ * Uses the inwx class: https://github.com/inwx/php-client
  * Symfony Service that performs api login upon __construct()
  * predefined funtions for common steps like new DNS entry or update an existing entry.
 
