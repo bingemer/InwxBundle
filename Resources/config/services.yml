@@ -1,4 +1,4 @@
 services:
     bingemer_inwx_bundle:
         class: Bingemer\InwxBundle\Classes\Domrobot
-        arguments: ["%inwx_url%", "%locale%", "%kernel.cache_dir%", "%inwx_user%", "%inwx_pass%"]
+        arguments: ["%inwx_url%", "%inwx_locale%", "%kernel.cache_dir%", "%inwx_user%", "%inwx_pass%"]

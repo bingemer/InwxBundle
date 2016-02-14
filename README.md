@@ -38,32 +38,16 @@ Configuration
 
 ### 1) Edit app/config.yml
 
-The following configuration lines are required:
-
-```yaml
-bingemer_inwx:
-    username: inwx web user # Required: Username
-    password: inwx web pass # Required: Password
-    url: ~                  # Defaults to the test environment and has to be set to process real operations
-                            # test environment: https://api.ote.domrobot.com/xmlrpc/ 
-                            # production environment: https://api.domrobot.com/xmlrpc/
-    locale: "%locale%"      # Defaults to en
-```
-You could add parameters to parameters.yml and use them to not store this data in a VCS:
+Add the following parameters to parameters.yml
 ```yaml
 parameters:
     ...
     inwx_user: username
     inwx_pass: password
+    inwx_url: 'https://api.domrobot.com/xmlrpc/'
+    inwx_locale: en
 ```
-and in config.yml
-```yaml
-bingemer_inwx:
-    username: "%inwx_user%"
-    password: "%inwx_pass%"
-    url:      https://api.domrobot.com/xmlrpc/
-    locale:   "%locale%"
-```
+Note: The parameter %local% is also used
 
 Usage
 -----
