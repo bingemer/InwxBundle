@@ -45,5 +45,32 @@ bingemer_inwx:
     username: inwx web user # Required: Username
     password: inwx web pass # Required: Passwort
     url: ~                  # Defaults to https://api.domrobot.com/xmlrpc/   
-    locale: "%locale%"      # Defaults to locale parameter
+    locale: "%locale%"      # Defaults to en
 ```
+
+
+Usage
+-----
+In your Controller get the service:
+```php
+$domrobot = $this->get('bingemer_inwx_bundle');
+```
+
+Use the functions provided to create:
+```php
+$result = $domrobot->createRecord('hostname w/o domain', 'ip-address', 'domain');
+```
+or update a record:
+```php
+$result = $domrobot->updateRecord('inwx_id, 'ip-address');
+```
+
+The Result is 1:1 from the original Domrobot class documented here:
+[API DOC](https://www.inwx.de/en/help/apidoc)
+In case of my createRecord() function, the id is contained in the $result.
+
+The original Domrobot class can be found here:
+[Inwx Domrobot Class](https://github.com/inwx/php-client)
+
+More information and classes for other languages can be found here:
+[https://www.inwx.de/en/offer/api](https://www.inwx.de/en/offer/api)

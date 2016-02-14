@@ -21,8 +21,12 @@ class Configuration implements ConfigurationInterface
             ->children()
                 ->scalarNode('username')->end()
                 ->scalarNode('password')->end()
-                ->scalarNode('url')->end()
-                ->scalarNode('locale')->end()
+                ->scalarNode('url')
+                    ->defaultValue('https://api.domrobot.com/xmlrpc/')
+                ->end()
+                ->scalarNode('locale')
+                    ->defaultValue('en')
+                ->end()
             ->end()
         ;
 
