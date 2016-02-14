@@ -22,7 +22,7 @@ class Configuration implements ConfigurationInterface
                 ->scalarNode('username')->end()
                 ->scalarNode('password')->end()
                 ->scalarNode('url')
-                    ->defaultValue('https://api.domrobot.com/xmlrpc/')
+                    ->defaultValue('https://api.ote.domrobot.com/xmlrpc/') // defaults to test environment
                 ->end()
                 ->scalarNode('locale')
                     ->defaultValue('en')

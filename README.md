@@ -44,7 +44,9 @@ The following configuration lines are required:
 bingemer_inwx:
     username: inwx web user # Required: Username
     password: inwx web pass # Required: Passwort
-    url: ~                  # Defaults to https://api.domrobot.com/xmlrpc/   
+    url: ~                  # Defaults to the test environment and has to be set to process real operations
+                            # test environment: https://api.ote.domrobot.com/xmlrpc/ 
+                            # production environment: https://api.domrobot.com/xmlrpc/
     locale: "%locale%"      # Defaults to en
 ```
 
