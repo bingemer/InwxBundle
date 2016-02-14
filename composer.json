@@ -14,7 +14,7 @@
         }
     ],
     "require": {
-        "inwx/domrobot": "dev-master"
+        "inwx/php-client": "dev-master"
     },
     "autoload": {
         "psr-4": { "Bingemer\\InwxBundle\\": "" }
