@@ -1,0 +1,27 @@
+{
+    "name": "bingemer/inwxbundle",
+    "type": "library",
+    "description": "A Symfony bundle to use the inwx api (Domrobot class https://github.com/inwx/php-client)",
+    "keywords": ["inwx", "api"],
+    "homepage": "http://github.com/bingemer/InwxBundle",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jörg Bingemer",
+            "email": "info@bingemer.com",
+            "homepage": "http://www.baetmaen.de",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "inwx/domrobot": "dev-master"
+    },
+    "autoload": {
+        "psr-4": { "Bingemer\\InwxBundle\\": "" }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.1.x-dev"
+        }
+    }
+}

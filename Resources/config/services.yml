@@ -1,0 +1,4 @@
+services:
+    bingemer_inwx_bundle:
+        class: Bingemer\InwxBundle\BingemerInwxBundle
+        arguments: ["%inwx_url%", "%locale%", "%kernel.cache_dir%", "%inwx_user%", "%inwx_pass%"]
