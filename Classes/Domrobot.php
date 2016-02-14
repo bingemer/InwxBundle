@@ -29,6 +29,33 @@ class Domrobot
         $this->loginResult = $this->login($username, $password, $sharedSecret);
     }
 
+	public function createRecord($name, $ip, $domain = 'somedomainnameyouwishtoupgrade.de', $type = 'A')
+	{
+		if (strpos($name, $domain) === false) {
+			$name = $name.".".$domain;
+		}
+		try {
+			$result = $this->call('nameserver', 'createRecord', array(
+				'domain' => $domain,
+				'type' => $type,
+				'name' => $name,
+				'content' => $ip
+			));
+			return $result;
+		} catch (Exception $e) {
+			return $e->getMessage();
+		}
+	}
+
+	public function updateRecord($id, $ip)
+	{
+        $result = $this->call('nameserver','updateRecord', array(
+            'id' => $id,
+            'content' => $ip
+        ));
+		return $result;
+	}
+
     public function login($username, $password, $sharedSecret = null)
     {
         $fp = fopen($this->_cookiefile, "w");
