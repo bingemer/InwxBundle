@@ -1,5 +1,5 @@
-InwxBundle - A bundle to talk to the inwx api (inwx.de/inwx.com)
-==============================================================
+InwxBundle - A bundle to talk to the inwx api
+=============================================
 
 Features
 --------
