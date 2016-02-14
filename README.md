@@ -47,7 +47,6 @@ parameters:
     inwx_url: 'https://api.domrobot.com/xmlrpc/'
     inwx_locale: en
 ```
-Note: The parameter %local% is also used
 
 Usage
 -----
