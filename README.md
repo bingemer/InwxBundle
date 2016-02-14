@@ -33,8 +33,8 @@ Add this to app/AppKernel.php
 ```
 
 
-Configuration (only 3 quick steps!)
------------------------------------
+Configuration
+-------------
 
 ### 1) Edit app/config.yml
 
