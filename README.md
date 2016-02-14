@@ -62,7 +62,7 @@ bingemer_inwx:
     username: "%inwx_user%"
     password: "%inwx_pass%"
     url:      https://api.domrobot.com/xmlrpc/
-    locale:   de
+    locale:   "%locale%"
 ```
 
 Usage
