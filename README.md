@@ -5,7 +5,7 @@ Features
 --------
 
  * Uses the inwx class: https://github.com/inwx/php-client
- * Symfony Service that performs api login upon __construct()
+ * Service that performs api login upon __construct(), logout on __destruct()
  * predefined funtions for common steps like new DNS entry or update an existing entry.
 
 Installation
