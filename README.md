@@ -91,3 +91,7 @@ The original Domrobot class can be found here:
 
 More information and classes for other languages can be found here:
 [https://www.inwx.de/en/offer/api](https://www.inwx.de/en/offer/api)
+
+Errors
+------
+This is my first symfony bundle, if you have any problems or found mistakes I made please tell me ;)
