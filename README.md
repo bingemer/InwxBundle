@@ -49,7 +49,21 @@ bingemer_inwx:
                             # production environment: https://api.domrobot.com/xmlrpc/
     locale: "%locale%"      # Defaults to en
 ```
-
+You could add parameters to parameters.yml and use them to not store this data in a VCS:
+```yaml
+parameters:
+    ...
+    inwx_user: username
+    inwx_pass: password
+```
+and in config.yml
+```yaml
+bingemer_inwx:
+    username: "%inwx_user%"
+    password: "%inwx_pass%"
+    url:      https://api.domrobot.com/xmlrpc/
+    locale:   de
+```
 
 Usage
 -----
@@ -67,7 +81,7 @@ or update a record:
 $result = $domrobot->updateRecord('inwx_id, 'ip-address');
 ```
 
-The Result is 1:1 from the original Domrobot class documented here:
+The result array is 1:1 from the original Domrobot class documented here:
 [API DOC](https://www.inwx.de/en/help/apidoc)
 
 In case of my createRecord() function, the "inwx_id" is contained in the $result.
