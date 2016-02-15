@@ -13,12 +13,13 @@ class Domrobot
     private $debug = false;
     private $address;
     private $language;
-    private $customer = false;
+    private $customer = "";
     private $clTRID = null;
 
     private $_ver = "2.4";
 	private $_cachedir;
     private $_cookiefile = NULL;
+    private $loginResult = NULL;
 
     function __construct($address, $locale = 'en', $cache_dir, $username, $password, $sharedSecret = null)
     {
@@ -42,7 +43,7 @@ class Domrobot
 				'content' => $ip
 			));
 			return $result;
-		} catch (Exception $e) {
+		} catch (\Exception $e) {
 			return $e->getMessage();
 		}
 	}
@@ -63,6 +64,8 @@ class Domrobot
 
         if (!empty($this->language)) {
             $params['lang'] = $this->language;
+        } else {
+            $params['lang'] = "en"; //fallback
         }
         $params['user'] = $username;
         $params['pass'] = $password;
@@ -220,7 +223,7 @@ class Domrobot
 
     public function getCookiefile()
     {
-        return $this->$_cookiefile();
+        return $this->_cookiefile();
     }
 
     public function setCookiefile($file)
@@ -228,7 +231,7 @@ class Domrobot
         if ((file_exists($file) && !is_writable($file)) || (!file_exists($file) && !is_writeable(dirname($file)))) {
             throw new \Exception("Cannot write cookiefile: '{$this->_cookiefile}'. Please check file/folder permissions.", 2400);
         }
-        $this->$_cookiefile = $file;
+        $this->_cookiefile = $file;
     }
 
     public function getCustomer()
