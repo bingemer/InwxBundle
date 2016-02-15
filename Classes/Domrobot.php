@@ -62,6 +62,7 @@ class Domrobot
         $fp = fopen($this->_cookiefile, "w");
         fclose($fp);
 
+        $params = array();
         if (!empty($this->language)) {
             $params['lang'] = $this->language;
         } else {
@@ -223,7 +224,7 @@ class Domrobot
 
     public function getCookiefile()
     {
-        return $this->_cookiefile();
+        return $this->_cookiefile;
     }
 
     public function setCookiefile($file)
