@@ -55,7 +55,7 @@ In your Controller get the service:
 $domrobot = $this->get('bingemer_inwx_bundle');
 ```
 
-Use the functions provided to create:
+Use the functions provided to create an A entry (4th parameter is entry type which defaults to 'A'):
 ```php
 $result = $domrobot->createRecord('hostname w/o domain', 'ip-address', 'domain');
 ```
