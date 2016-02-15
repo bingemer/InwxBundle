@@ -34,7 +34,7 @@ class Domrobot
      * @param $password
      * @param null $sharedSecret
      */
-    function __construct($address, $locale = 'en', $cache_dir, $username, $password, $sharedSecret = null)
+    public function __construct($address, $locale = 'en', $cache_dir, $username, $password, $sharedSecret = null)
     {
         $this->address = (substr($address, -1) != "/") ? $address . "/" : $address;
         $this->_cachedir = $cache_dir;
@@ -132,7 +132,7 @@ class Domrobot
         }
 
         $request = xmlrpc_encode_request(strtolower($object . "." . $method), $params, array("encoding" => "UTF-8", "escaping" => "markup", "verbosity" => "no_white_space"));
-
+        $header = array();
         $header[] = "Content-Type: text/xml";
         $header[] = "Connection: keep-alive";
         $header[] = "Keep-Alive: 300";
@@ -213,8 +213,9 @@ class Domrobot
         }
         $secret = str_replace('=', '', $secret);
         $secret = str_split($secret);
+        $secretCount = count($secret);
         $binaryString = "";
-        for ($i = 0; $i < count($secret); $i = $i + 8) {
+        for ($i = 0; $i < $secretCount; $i = $i + 8) {
             $x = "";
             if (!in_array($secret[$i], $base32chars)) {
                 return false;
@@ -223,7 +224,8 @@ class Domrobot
                 $x .= str_pad(base_convert(@$base32charsFlipped[@$secret[$i + $j]], 10, 2), 5, '0', STR_PAD_LEFT);
             }
             $eightBits = str_split($x, 8);
-            for ($z = 0; $z < count($eightBits); $z++) {
+            $eightBitsCount = count($eightBits);
+            for ($z = 0; $z < $eightBitsCount; $z++) {
                 $binaryString .= (($y = chr(base_convert($eightBits[$z], 2, 10))) || ord($y) == 48) ? $y : "";
             }
         }
@@ -247,7 +249,7 @@ class Domrobot
     /**
      *  logout on destruct
      */
-    function __destruct()
+    public function __destruct()
     {
         $this->logout();
     }
