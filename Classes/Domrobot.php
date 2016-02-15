@@ -1,11 +1,11 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: joerg
- * Date: 14.02.16
- * Time: 20:31
- * copied and modified from https://github.com/inwx/php-client
- */
+     * Created by PhpStorm.
+     * User: joerg
+     * Date: 14.02.16
+     * Time: 20:31
+     * copied and modified from https://github.com/inwx/php-client
+     */
 namespace Bingemer\InwxBundle\Classes;
 
 /**
@@ -21,7 +21,7 @@ class Domrobot
     private $clTRID = null;
 
     private $_ver = "2.4";
-	private $_cachedir;
+    private $_cachedir;
     private $_cookiefile = NULL;
     private $loginResult = NULL;
 
@@ -53,7 +53,7 @@ class Domrobot
 	public function createRecord($name, $ip, $domain = 'somedomainnameyouwishtoupgrade.de', $type = 'A')
 	{
 		if (strpos($name, $domain) === false) {
-			$name = $name.".".$domain;
+			$name = $name . "." . $domain;
 		}
 		try {
 			$result = $this->call('nameserver', 'createRecord', array(
@@ -75,7 +75,7 @@ class Domrobot
      */
 	public function updateRecord($id, $ip)
 	{
-        $result = $this->call('nameserver','updateRecord', array(
+        $result = $this->call('nameserver', 'updateRecord', array(
             'id' => $id,
             'content' => $ip
         ));
@@ -117,8 +117,8 @@ class Domrobot
     }
 
     /**
-     * @param $object
-     * @param $method
+     * @param string $object
+     * @param string $method
      * @param array $params
      * @return mixed
      */
@@ -188,29 +188,37 @@ class Domrobot
 
     /**
      * @param $secret
-     * @return bool|string
+     * @return string|false
      */
     private function _base32Decode($secret)
     {
-        if (empty($secret)) return '';
+        if (empty($secret)) {
+            return '';
+        }
 
         $base32chars = $this->_getBase32LookupTable();
         $base32charsFlipped = array_flip($base32chars);
 
         $paddingCharCount = substr_count($secret, $base32chars[32]);
         $allowedValues = array(6, 4, 3, 1, 0);
-        if (!in_array($paddingCharCount, $allowedValues)) return false;
+        if (!in_array($paddingCharCount, $allowedValues)) {
+            return false;
+        }
         for ($i = 0; $i < 4; $i++) {
             if ($paddingCharCount == $allowedValues[$i] &&
                 substr($secret, -($allowedValues[$i])) != str_repeat($base32chars[32], $allowedValues[$i])
-            ) return false;
+            ) {
+                return false;
+            }
         }
         $secret = str_replace('=', '', $secret);
         $secret = str_split($secret);
         $binaryString = "";
         for ($i = 0; $i < count($secret); $i = $i + 8) {
             $x = "";
-            if (!in_array($secret[$i], $base32chars)) return false;
+            if (!in_array($secret[$i], $base32chars)) {
+                return false;
+            }
             for ($j = 0; $j < 8; $j++) {
                 $x .= str_pad(base_convert(@$base32charsFlipped[@$secret[$i + $j]], 10, 2), 5, '0', STR_PAD_LEFT);
             }
@@ -223,7 +231,7 @@ class Domrobot
     }
 
     /**
-     * @return array
+     * @return string[]
      */
     private function _getBase32LookupTable()
     {
@@ -265,7 +273,7 @@ class Domrobot
     }
 
     /**
-     * @param $language
+     * @param string $language
      */
     public function setLanguage($language)
     {
@@ -289,7 +297,7 @@ class Domrobot
     }
 
     /**
-     * @return null|string
+     * @return string
      */
     public function getCookiefile()
     {
@@ -325,7 +333,7 @@ class Domrobot
     }
 
     /**
-     * @return null
+     * @return string
      */
     public function getClTrId()
     {
