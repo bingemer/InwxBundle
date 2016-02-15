@@ -1,6 +1,9 @@
 InwxBundle - A bundle to talk to the inwx api
 =============================================
 
+Build Status: [![Build Status](https://scrutinizer-ci.com/g/bingemer/InwxBundle/badges/build.png?b=master)](https://scrutinizer-ci.com/g/bingemer/InwxBundle/build-status/master)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/bingemer/InwxBundle/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/bingemer/InwxBundle/?branch=master)
+
 Features
 --------
 
