@@ -1,10 +1,10 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: joerg
- * Date: 14.02.16
- * Time: 19:38
- */
+     * Created by PhpStorm.
+     * User: joerg
+     * Date: 14.02.16
+     * Time: 19:38
+     */
 namespace Bingemer\InwxBundle\DependencyInjection;
 
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
@@ -22,7 +22,7 @@ class BingemerInwxExtension extends Extension
         //service
         $loader = new YamlFileLoader(
             $container,
-            new FileLocator(__DIR__.'/../Resources/config')
+            new FileLocator(__DIR__ . '/../Resources/config')
         );
         $loader->load('services.yml');
     }

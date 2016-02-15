@@ -1,10 +1,10 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: joerg
- * Date: 14.02.16
- * Time: 19:47
- */
+     * Created by PhpStorm.
+     * User: joerg
+     * Date: 14.02.16
+     * Time: 19:47
+     */
 namespace Bingemer\InwxBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
