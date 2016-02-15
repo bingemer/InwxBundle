@@ -50,37 +50,37 @@ class Domrobot
      * @param string $type
      * @return mixed|string
      */
-	public function createRecord($name, $ip, $domain = 'somedomainnameyouwishtoupgrade.de', $type = 'A')
-	{
-		if (strpos($name, $domain) === false) {
-			$name = $name . "." . $domain;
-		}
-		try {
-			$result = $this->call('nameserver', 'createRecord', array(
-				'domain' => $domain,
-				'type' => $type,
-				'name' => $name,
-				'content' => $ip
-			));
-			return $result;
-		} catch (\Exception $e) {
-			return $e->getMessage();
-		}
-	}
+    public function createRecord($name, $ip, $domain = 'somedomainnameyouwishtoupgrade.de', $type = 'A')
+    {
+        if (strpos($name, $domain) === false) {
+            $name = $name . "." . $domain;
+        }
+        try {
+            $result = $this->call('nameserver', 'createRecord', array(
+                'domain' => $domain,
+                'type' => $type,
+                'name' => $name,
+                'content' => $ip
+            ));
+            return $result;
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
+    }
 
     /**
      * @param $id
      * @param $ip
      * @return mixed
      */
-	public function updateRecord($id, $ip)
-	{
+    public function updateRecord($id, $ip)
+    {
         $result = $this->call('nameserver', 'updateRecord', array(
             'id' => $id,
             'content' => $ip
         ));
-		return $result;
-	}
+        return $result;
+    }
 
     /**
      * @param $username
@@ -265,7 +265,7 @@ class Domrobot
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getLanguage()
     {
