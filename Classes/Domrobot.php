@@ -8,6 +8,10 @@
  */
 namespace Bingemer\InwxBundle\Classes;
 
+/**
+ * Class Domrobot
+ * @package Bingemer\InwxBundle\Classes
+ */
 class Domrobot
 {
     private $debug = false;
@@ -21,6 +25,15 @@ class Domrobot
     private $_cookiefile = NULL;
     private $loginResult = NULL;
 
+    /**
+     * Domrobot constructor.
+     * @param $address
+     * @param string $locale
+     * @param $cache_dir
+     * @param $username
+     * @param $password
+     * @param null $sharedSecret
+     */
     function __construct($address, $locale = 'en', $cache_dir, $username, $password, $sharedSecret = null)
     {
         $this->address = (substr($address, -1) != "/") ? $address . "/" : $address;
@@ -30,6 +43,13 @@ class Domrobot
         $this->loginResult = $this->login($username, $password, $sharedSecret);
     }
 
+    /**
+     * @param $name
+     * @param $ip
+     * @param string $domain
+     * @param string $type
+     * @return mixed|string
+     */
 	public function createRecord($name, $ip, $domain = 'somedomainnameyouwishtoupgrade.de', $type = 'A')
 	{
 		if (strpos($name, $domain) === false) {
@@ -48,6 +68,11 @@ class Domrobot
 		}
 	}
 
+    /**
+     * @param $id
+     * @param $ip
+     * @return mixed
+     */
 	public function updateRecord($id, $ip)
 	{
         $result = $this->call('nameserver','updateRecord', array(
@@ -57,6 +82,12 @@ class Domrobot
 		return $result;
 	}
 
+    /**
+     * @param $username
+     * @param $password
+     * @param null $sharedSecret
+     * @return mixed
+     */
     public function login($username, $password, $sharedSecret = null)
     {
         $fp = fopen($this->_cookiefile, "w");
@@ -85,6 +116,12 @@ class Domrobot
         }
     }
 
+    /**
+     * @param $object
+     * @param $method
+     * @param array $params
+     * @return mixed
+     */
     public function call($object, $method, array $params = array())
     {
         if (isset($this->customer) && $this->customer != "") {
@@ -120,6 +157,10 @@ class Domrobot
         return xmlrpc_decode($response, 'UTF-8');
     }
 
+    /**
+     * @param $secret
+     * @return string
+     */
     private function _getSecretCode($secret)
     {
         $_timeSlice = floor(time() / 30);
@@ -145,6 +186,10 @@ class Domrobot
         return str_pad($value % $modulo, $_codeLength, '0', STR_PAD_LEFT);
     }
 
+    /**
+     * @param $secret
+     * @return bool|string
+     */
     private function _base32Decode($secret)
     {
         if (empty($secret)) return '';
@@ -177,6 +222,9 @@ class Domrobot
         return $binaryString;
     }
 
+    /**
+     * @return array
+     */
     private function _getBase32LookupTable()
     {
         return array(
@@ -188,11 +236,17 @@ class Domrobot
         );
     }
 
+    /**
+     *  logout on destruct
+     */
     function __destruct()
     {
         $this->logout();
     }
 
+    /**
+     * @return mixed
+     */
     public function logout()
     {
         $ret = $this->call('account', 'logout');
@@ -202,31 +256,50 @@ class Domrobot
         return $ret;
     }
 
+    /**
+     * @return mixed
+     */
     public function getLanguage()
     {
         return $this->language;
     }
 
+    /**
+     * @param $language
+     */
     public function setLanguage($language)
     {
         $this->language = $language;
     }
 
+    /**
+     * @return bool
+     */
     public function getDebug()
     {
         return $this->debug;
     }
 
+    /**
+     * @param bool $debug
+     */
     public function setDebug($debug = false)
     {
         $this->debug = (bool)$debug;
     }
 
+    /**
+     * @return null|string
+     */
     public function getCookiefile()
     {
         return $this->_cookiefile;
     }
 
+    /**
+     * @param $file
+     * @throws \Exception
+     */
     public function setCookiefile($file)
     {
         if ((file_exists($file) && !is_writable($file)) || (!file_exists($file) && !is_writeable(dirname($file)))) {
@@ -235,21 +308,33 @@ class Domrobot
         $this->_cookiefile = $file;
     }
 
+    /**
+     * @return string
+     */
     public function getCustomer()
     {
         return $this->customer;
     }
 
+    /**
+     * @param $customer
+     */
     public function setCustomer($customer)
     {
         $this->customer = (string)$customer;
     }
 
+    /**
+     * @return null
+     */
     public function getClTrId()
     {
         return $this->clTRID;
     }
 
+    /**
+     * @param $clTrId
+     */
     public function setClTrId($clTrId)
     {
         $this->clTRID = (string)$clTrId;
