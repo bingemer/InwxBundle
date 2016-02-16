@@ -44,7 +44,7 @@ class Domrobot
     }
 
     /**
-     * @param $name
+     * @param string $name
      * @param $ip
      * @param string $domain
      * @param string $type
@@ -69,7 +69,7 @@ class Domrobot
     }
 
     /**
-     * @param $id
+     * @param integer $id
      * @param $ip
      * @return mixed
      */
@@ -78,6 +78,20 @@ class Domrobot
         $result = $this->call('nameserver', 'updateRecord', array(
             'id' => $id,
             'content' => $ip
+        ));
+        return $result;
+    }
+
+    /**
+     * @param integer $id
+     * @param bool $testing
+     * @return mixed
+     */
+    public function deleteRecord($id, $testing = false)
+    {
+        $result = $this->call('nameserver', 'deleteRecord', array(
+            'id' => $id,
+            'testing' => $testing
         ));
         return $result;
     }

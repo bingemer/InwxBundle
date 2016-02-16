@@ -62,9 +62,13 @@ Use the functions provided to create an A entry (4th parameter is entry type whi
 ```php
 $result = $domrobot->createRecord('hostname w/o domain', 'ip-address', 'domain');
 ```
-or update a record:
+update record:
 ```php
 $result = $domrobot->updateRecord('inwx_id, 'ip-address');
+```
+delete record:
+```php
+$result = $domrobot->deleteRecord('inwx_id);
 ```
 
 The result array is 1:1 from the original Domrobot class documented here:
