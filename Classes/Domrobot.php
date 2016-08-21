@@ -50,7 +50,7 @@ class Domrobot
      * @param string $type
      * @return mixed|string
      */
-    public function createRecord($name, $ip, $domain = 'somedomainnameyouwishtoupgrade.de', $type = 'A')
+    public function createRecord($name, $ip, $domain = 'somedomainnameyouwishtoupgrade.de', $type = 'A', $ttl = 3600)
     {
         if (strpos($name, $domain) === false) {
             $name = $name . "." . $domain;
@@ -60,7 +60,8 @@ class Domrobot
                 'domain' => $domain,
                 'type' => $type,
                 'name' => $name,
-                'content' => $ip
+                'content' => $ip,
+                'ttl' => $ttl
             ));
             return $result;
         } catch (\Exception $e) {
