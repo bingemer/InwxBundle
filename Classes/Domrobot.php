@@ -48,6 +48,7 @@ class Domrobot
      * @param $ip
      * @param string $domain
      * @param string $type
+     * @param int $ttl
      * @return mixed|string
      */
     public function createRecord($name, $ip, $domain = 'somedomainnameyouwishtoupgrade.de', $type = 'A', $ttl = 3600)
